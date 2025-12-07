@@ -1,0 +1,213 @@
+.chatWidget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--docusaurus-sidebar-background-color); /* Use Docusaurus theme variable */
+  color: var(--docusaurus-text-color); /* Use Docusaurus theme variable */
+  border: 1px solid var(--docusaurus-toc-border-color); /* Use Docusaurus theme variable */
+  transition: all 0.3s ease-in-out;
+}
+
+.chatWidget.open {
+  width: 380px;
+  height: 500px;
+}
+
+.toggleButton {
+  background-color: var(--docusaurus-primary-color); /* Use Docusaurus theme variable */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease-in-out;
+  align-self: flex-end; /* Position button at the bottom right when closed */
+}
+
+.chatWidget.open .toggleButton {
+  display: none; /* Hide toggle button when chat is open */
+}
+
+.toggleButton:hover {
+  background-color: var(--docusaurus-primary-dark-color); /* Darker shade on hover */
+}
+
+.chatWindow {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chatHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: var(--docusaurus-navbar-background-color); /* Use Docusaurus theme variable */
+  color: var(--docusaurus-navbar-color);
+  border-bottom: 1px solid var(--docusaurus-toc-border-color);
+}
+
+.chatHeader h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.chatHeader button {
+  background: none;
+  border: none;
+  color: var(--docusaurus-navbar-color);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.chatMessages {
+  flex-grow: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background-color: var(--docusaurus-background-color); /* Use Docusaurus theme variable */
+  border-bottom: 1px solid var(--docusaurus-toc-border-color);
+}
+
+.welcomeMessage {
+  text-align: center;
+  color: var(--docusaurus-secondary-text-color);
+  font-style: italic;
+  padding: 10px;
+}
+
+.chatMessage {
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  max-width: 80%;
+}
+
+.userMessage {
+  background-color: var(--docusaurus-primary-color-light); /* Light primary color for user */
+  color: var(--docusaurus-primary-color-dark);
+  align-self: flex-end;
+  margin-left: auto;
+  text-align: right;
+}
+
+.botMessage {
+  background-color: var(--docusaurus-secondary-color-light); /* Light secondary color for bot */
+  color: var(--docusaurus-secondary-color-dark);
+  align-self: flex-start;
+  margin-right: auto;
+  text-align: left;
+}
+
+.chatInputForm {
+  display: flex;
+  padding: 10px 15px;
+  border-top: 1px solid var(--docusaurus-toc-border-color);
+  background-color: var(--docusaurus-sidebar-background-color);
+}
+
+.chatInputForm input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid var(--docusaurus-toc-border-color);
+  border-radius: 8px;
+  margin-right: 10px;
+  background-color: var(--docusaurus-background-color);
+  color: var(--docusaurus-text-color);
+}
+
+.chatInputForm button {
+  background-color: var(--docusaurus-primary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.chatInputForm button:hover:not(:disabled) {
+  background-color: var(--docusaurus-primary-dark-color);
+}
+
+.chatInputForm button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.loadingMessage {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  color: var(--docusaurus-secondary-text-color);
+}
+
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid var(--docusaurus-primary-color);
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+.citations {
+  font-size: 0.8em;
+  color: var(--docusaurus-secondary-text-color);
+  margin-top: 5px;
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  padding-top: 5px;
+}
+
+.citations ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 5px;
+}
+
+.citations li {
+  margin-bottom: 2px;
+}
+
+.citations a {
+  color: var(--docusaurus-link-color);
+  text-decoration: none;
+}
+
+.citations a:hover {
+  text-decoration: underline;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* --- Dark Mode adjustments --- */
+html[data-theme='dark'] .toggleButton {
+  background-color: var(--docusaurus-primary-dark-color);
+}
+html[data-theme='dark'] .toggleButton:hover {
+  background-color: var(--docusaurus-primary-color);
+}
+html[data-theme='dark'] .chatWidget {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+html[data-theme='dark'] .userMessage {
+  background-color: var(--docusaurus-primary-color-dark);
+  color: white;
+}
+html[data-theme='dark'] .botMessage {
+  background-color: var(--docusaurus-secondary-color-dark);
+  color: white;
+}

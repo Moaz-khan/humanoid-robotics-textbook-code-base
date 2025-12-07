@@ -1,0 +1,100 @@
+openapi: 3.0.0
+info:
+  title: Physical AI & Humanoid Robotics Chatbot API
+  version: 1.0.0
+paths:
+  /chat:
+    post:
+      summary: Send a message to the chatbot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                user_id:
+                  type: string
+                  format: uuid
+                session_id:
+                  type: string
+                  format: uuid
+                selected_text:
+                  type: string
+      responses:
+        '200':
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  response:
+                    type: string
+                  citations:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        chapter:
+                          type: string
+                        section:
+                          type: string
+  /signup:
+    post:
+      summary: Create a new user account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                background:
+                  type: object
+                  properties:
+                    software_experience:
+                      type: string
+                    hardware_experience:
+                      type: string
+                    robotics_familiarity:
+                      type: string
+                    ai_ml_familiarity:
+                      type: string
+      responses:
+        '201':
+          description: User created successfully
+  /login:
+    post:
+      summary: Log in a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Successful login
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                  token_type:
+                    type: string

@@ -1,0 +1,37 @@
+.floatingButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1001; /* Higher than chat widget when closed */
+  background-color: var(--docusaurus-primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.floatingButton:hover {
+  background-color: var(--docusaurus-primary-dark-color);
+  transform: scale(1.05);
+}
+
+.floatingButton.hidden {
+  display: none;
+}
+
+/* Dark Mode adjustments */
+html[data-theme='dark'] .floatingButton {
+  background-color: var(--docusaurus-primary-dark-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+html[data-theme='dark'] .floatingButton:hover {
+  background-color: var(--docusaurus-primary-color);
+}

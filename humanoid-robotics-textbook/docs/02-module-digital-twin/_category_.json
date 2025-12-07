@@ -1,0 +1,10 @@
+{
+  "label": "Module 2: The Digital Twin (Gazebo & Unity)",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "title": "Robot Simulation with Gazebo & Unity",
+    "description": "Explore realistic physics and human-robot interaction in simulated environments.",
+    "slug": "/category/module-2-digital-twin"
+  }
+}
